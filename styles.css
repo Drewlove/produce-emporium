@@ -1,0 +1,33 @@
+.inventory-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
+.item{
+  margin: 25px 0px 0px 50px; 
+  border: 1px solid black; 
+  padding: 25px; 
+}
+
+.add-to-cart-btn:hover{
+  background-color: #0072ff;
+  cursor: pointer; 
+}
+
+.cart-container{
+  margin: 0 auto; 
+  text-align: center; 
+  margin-top: 100px; 
+  border: 1px solid black; 
+  height: 250px; 
+  width: 800px
+}
+
+.cart-item{
+  margin-left: 75px; 
+  border: 1px solid black; 
+  width: 20%; 
+  display: inline-block
+}
+

@@ -5,12 +5,12 @@
 }
 
 .item{
-  margin: 25px 0px 0px 50px; 
+  margin: 25px; 
   border: 1px solid black; 
   padding: 25px; 
 }
 
-.add-to-cart-btn:hover{
+.cart-btn:hover{
   background-color: #0072ff;
   cursor: pointer; 
 }
@@ -18,6 +18,22 @@
 .cart-container{
   margin: 0 auto; 
   text-align: center; 
+}
+
+.remove-btn:hover{
+  background-color: #0072ff;
+  cursor: pointer;   
+}
+
+#cart-title{
+  text-align: center;
+  margin-top: 75px;
+  margin-bottom: -75px;
+}
+
+.cart-container{
+  display: flex; 
+  margin: 0 auto; 
   margin-top: 100px; 
   border: 1px solid black; 
   height: 250px; 
@@ -30,4 +46,3 @@
   width: 20%; 
   display: inline-block
 }
-

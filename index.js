@@ -1,3 +1,11 @@
+/*error
+-->Remove Button: removeItem function uses shift to remove the first object displayed in cart, EVEN if another object is removed
+
+addToCartLisener can be integrated into the same code block as displayAddCartButton
+In general, see if you can roll listener functions into the function that creates the element
+*/ 
+
+
 //Inventory items available to purchase
 var inventory = [
   {name: "apples", 
@@ -14,15 +22,14 @@ var inventory = [
 ]
 
 //Cart instantiates as an empty array of objects. 
-var cart = []
+var cart = [];
 
 
-displayInventory(inventory) 
 //Function iterates over each object in the inventory array, and
-    //appends an "Add to Cart" button
-    //adds an event istener to that button that allows user to add items to their cart
-    //adds an event listener that calculates total price if user changes the quantity of items in the input field
-      //total price = quantity*price per unit
+//appends an "Add to Cart" button
+//adds an event istener to that button that allows user to add items to their cart
+//adds an event listener that calculates total price if user changes the quantity of items in the input field
+//total price = quantity*price per unit  
 function displayInventory(arr){
   arr.map(function (item){ 
     displayItem(item, 1, ".inventory-container");  
@@ -32,6 +39,7 @@ function displayInventory(arr){
   calcTotalPriceListener(); 
 }
 
+displayInventory(inventory) 
 
 //Function is used both to initially display inventory items AND to display items in the cart after user clicks "add to cart"
 function displayItem(item, itemQuantity, container){
@@ -64,7 +72,6 @@ function displayItem(item, itemQuantity, container){
   var quantityText = document.createTextNode("Quantity: ")   
   quantityContainer.appendChild(quantityText);
 
-  
   //Displays "Total Price: $"
   var totalPriceContainer = document.createElement("p");
   var totalPriceText = document.createTextNode("Total Price: $")
@@ -123,17 +130,15 @@ function removeButtonListener(div){
 //If user clicks on remove button, the parent div, with all children, is removed from the DOM
 //the item is also completely removed from the user's cart 
 function removeItem(){
-  var div = this.closest("div");
-  var itemName = div.querySelector(".item-name")
-  var cartObj = {}; 
+  var selectedDiv = this.closest("div");
+  var itemName = selectedDiv.querySelector(".item-name")
   cart.forEach(function (cartItem){
-    if (cartItem.name === itemName){
-      cartObj = cartItem
-    } 
+    if(itemName.innerHTML === cartItem.name){
+      var cartItemIndex = cart.indexOf(cartItem); 
+      cart.splice(cartItemIndex, 1)
+    }
   })
-  cart.shift(cartObj)
-  div.parentNode.removeChild(div) 
-
+  selectedDiv.parentNode.removeChild(selectedDiv) 
 }
 
 function displayAddCartButton(){
